@@ -80,6 +80,7 @@ rules:
     - constant.string.char:
         start: "`"
         end: "`"
+        skip: "\\\\."
         rules: []
 
     - comment:
