@@ -8,11 +8,13 @@ rules:
       # Conditionals and control flow
     - preproc: "\\b(module|import)\\b"
     - preproc: "#\\b(define|flag|(post|pre)?include|pkgconfig)\\b"
-    - statement: "\\b(if|else|for|match|select|defer|or|unsafe|as|lock|sql)\\b"
+    - statement: "\\b(if|else|for|match|select|defer|or)\\b"
     - statement: "\\b(break|continue|goto|return)\\b"
     - statement: "\\b(go|spawn)\\b"
-    - type.keyword: "\\b(assert|const|enum|fn|struct|interface|type)\\b"
-    - type.keyword: "\\b(pub|mut|__global|static)\\b"
+    - type.keyword: "\\b(assert|const|enum|fn|implements|interface|struct|type|union)\\b"
+    - type.keyword: "\\b(pub|mut|__global|shared|static)\\b"
+
+    - type.keyword.other: "\\b(asm?|atomic|isreftype|r?lock|sql|unsafe|volatile)\\b"
 
     - identifier.os: "\\b(android|darwin|dragonfly|freebsd|gnu|haiku|hpux|ios|linux|mach|macos|netbsd|openbsd|plan9|qnx|serenity|solaris|termux|vinix|windows)\\b"
     - identifier.compiler: "\\b(gcc|tinyc|clang|mingw|msvc|cplusplus)\\b"
