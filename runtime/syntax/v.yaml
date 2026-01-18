@@ -41,7 +41,7 @@ rules:
     - preproc.type: "\\$\\b([a-z_]+)\\b"
 
       # Types
-    - type: "\\b(byte|u(8|16|32|64)|i(nt|8|16|64)|f(32|64))\\b"
+    - type: "\\b(byte|u(8|16|32|64)|i(nt|8|16|32|64)|f(32|64))\\b"
     - type: "\\b(bool|cha[nr]|map|rune|string)\\b"
     - type: "\\b(any(_int|_float)?|size_t|(uint|byte|char|void)ptr)\\b"
     - constant.bool: "\\b(true|false)\\b"
