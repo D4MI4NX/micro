@@ -32,7 +32,7 @@ rules:
             - symbol.attribute: "\\b[a-z_]+\\b"
             - default: ":\\s*[a-z_]+\\b"
             - constant.string: "'[^']*'"
-            - constant.string: "\"[^\"]\""
+            - constant.string: "\"[^\"]*\""
 
       # Compile time
     - preproc.control_flow: "\\$\\b(if|else|for)\\b"
