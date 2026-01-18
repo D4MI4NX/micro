@@ -8,7 +8,7 @@ rules:
       # Conditionals and control flow
     - preproc: "\\b(module|import)\\b"
     - preproc: "#\\b(define|flag|(post|pre)?include|pkgconfig)\\b"
-    - statement: "\\b(if|else|for|match|select|defer|or|unsafe|as|lock)\\b"
+    - statement: "\\b(if|else|for|match|select|defer|or|unsafe|as|lock|sql)\\b"
     - statement: "\\b(break|continue|goto|return)\\b"
     - statement: "\\b(go|spawn)\\b"
     - type.keyword: "\\b(assert|const|enum|fn|struct|interface|type)\\b"
@@ -22,12 +22,15 @@ rules:
     - identifier.class: "\\b([A-Z][A-Za-z0-9_]*)\\b"
     - identifier.function: "\\b([a-zA-Z0-9_]+(\\[ *([A-Z]( *, *)? *)+\\])?\\()"
     - symbol.operator: "\\b(i[ns])\\b|[-+/*<>!=~*%&:|^,.?]"
-    - symbol.attribute:
-        start: "^@\\["
-        end: "\\]$"
+
+    - default:
+        start: "@\\["
+        end: "\\]"
         rules:
-            - default: ".*"
-            - symbol: "\\b(deprecated|direct_array_access|flag|heap|if|inline|live|markused|noinit|noreturn|ref_only|typedef|unsafe|windows_stdcall)\\b"
+            - symbol.attribute: "\\b[a-z_]+\\b"
+            - default: ":\\s*[a-z_]+\\b"
+            - constant.string: "'[^']*'"
+            - constant.string: "\"[^\"]\""
 
       # Compile time
     - preproc.control_flow: "\\$\\b(if|else|for)\\b"
@@ -62,10 +65,6 @@ rules:
             - constant.specialChar: "%."
             - constant.specialChar: "\\\\[abefnrtv'\\\"\\\\]"
             - constant.specialChar: "\\\\([0-7]{3}|x[A-Fa-f0-9]{2}|u[A-Fa-f0-9]{4}|U[A-Fa-f0-9]{8})"
-            - default.string_interpolation:
-                start: "\\${"
-                end: "}"
-                rules: []
 
     - constant.string:
         start: "'"
@@ -75,12 +74,8 @@ rules:
             - constant.specialChar: "%."
             - constant.specialChar: "\\\\[abefnrtv'\\\"\\\\]"
             - constant.specialChar: "\\\\([0-7]{3}|x[A-Fa-f0-9]{2}|u[A-Fa-f0-9]{4}|U[A-Fa-f0-9]{8})"
-            - default.string_interpolation:
-                start: "\\${"
-                end: "}"
-                rules: []
 
-    - constant.string:
+    - constant.string.char:
         start: "`"
         end: "`"
         rules: []
@@ -98,6 +93,6 @@ rules:
             - todo: "(TODO|XXX|FIXME):?"
 
     - comment.shebang:
-        start: "#!"
+        start: "^#!"
         end: "$"
         rules: []
