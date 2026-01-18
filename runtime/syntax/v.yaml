@@ -20,7 +20,7 @@ rules:
     - identifier.other: "\\b(apk|autofree|backtrace|debug|es5|fast_math|freestanding|glibc|interpreter|js|js_browser|js_freestanding|js_node|native|no_backtrace|no_bounds_checking|no_main|no_segfault_handler|prealloc|prod|profile|threads|test|wasm32|wasm32_emscripten|wasm32_wasi)\\b"
 
     - identifier.class: "\\b([A-Z][A-Za-z0-9_]*)\\b"
-    - identifier.function: "\\b([a-zA-Z0-9_]+(\\[ *([A-Z]( *, *)? *)+\\])?\\()"
+    - identifier.function: "\\b([a-zA-Z0-9_]+(\\[ *([A-Z][a-zA-Z]*( *, *)? *)+\\])?\\()"
     - symbol.operator: "\\b(i[ns])\\b|[-+/*<>!=~*%&:|^,.?]"
 
     - default:
